@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FileFinder" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ExternalAppPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE</Value>
+    </Setting>
+    <Setting Name="FindBase" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\pcfs001\SharedHome\カスタムクラウド_案件用\課金・請求関連\請求明細+雛形</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
