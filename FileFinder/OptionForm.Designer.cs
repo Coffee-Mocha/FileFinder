@@ -108,7 +108,7 @@ namespace FileFinder
             // 
             this.checkCmdSwitchReadOnly.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkCmdSwitchReadOnly.AutoSize = true;
-            this.checkCmdSwitchReadOnly.Location = new System.Drawing.Point(212, 8);
+            this.checkCmdSwitchReadOnly.Location = new System.Drawing.Point(211, 8);
             this.checkCmdSwitchReadOnly.Name = "checkCmdSwitchReadOnly";
             this.checkCmdSwitchReadOnly.Size = new System.Drawing.Size(130, 16);
             this.checkCmdSwitchReadOnly.TabIndex = 7;
@@ -119,7 +119,7 @@ namespace FileFinder
             // 
             this.checkCmdSwitchInstanceExecute.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkCmdSwitchInstanceExecute.AutoSize = true;
-            this.checkCmdSwitchInstanceExecute.Location = new System.Drawing.Point(212, 42);
+            this.checkCmdSwitchInstanceExecute.Location = new System.Drawing.Point(211, 42);
             this.checkCmdSwitchInstanceExecute.Name = "checkCmdSwitchInstanceExecute";
             this.checkCmdSwitchInstanceExecute.Size = new System.Drawing.Size(130, 16);
             this.checkCmdSwitchInstanceExecute.TabIndex = 8;
@@ -196,9 +196,11 @@ namespace FileFinder
             this.Controls.Add(this.labelProcessPath);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(500, 260);
             this.Name = "OptionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "オプション";
+            this.TopMost = true;
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

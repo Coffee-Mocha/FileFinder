@@ -210,6 +210,7 @@
             // 
             // checkReadOnly
             // 
+            this.checkReadOnly.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkReadOnly.AutoSize = true;
             this.checkReadOnly.Location = new System.Drawing.Point(465, 301);
             this.checkReadOnly.Name = "checkReadOnly";
