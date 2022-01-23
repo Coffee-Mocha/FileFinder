@@ -17,11 +17,23 @@ namespace FileFinder
         {
             InitializeComponent();
 
+            this.Load += OptionForm_Load;
+
             this.CANCEL.Click += CANCEL_Click;
             this.OK.Click += OK_Click;
             this.buttonProcessPathReference.Click += ButtonProcessPathReference_Click;
 
+        }
+
+        private void OptionForm_Load(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
             this.textProcessPath.Text = Settings.Default.ExternalAppPath;
+            this.checkCmdSwitchReadOnly.Checked = Settings.Default.CmdSwitchReadOnly;
+            this.checkCmdSwitchInstanceExecute.Checked = Settings.Default.CmdSwitchInstanceExecute;
+            this.textCmdSwitchReadOnly.Text = Settings.Default.CmdSwitchReadOnlyText;
+            this.textCmdSwitchInstanceExecute.Text = Settings.Default.CmdSwitchInstanceExecuteText;
         }
 
         private void ButtonProcessPathReference_Click(object sender, EventArgs e)
@@ -74,7 +86,13 @@ namespace FileFinder
         {
             //throw new NotImplementedException();
 
+            // 設定の保存
             Settings.Default.ExternalAppPath = this.textProcessPath.Text;
+            Settings.Default.CmdSwitchReadOnly = this.checkCmdSwitchReadOnly.Checked;
+            Settings.Default.CmdSwitchInstanceExecute = this.checkCmdSwitchInstanceExecute.Checked;
+            Settings.Default.CmdSwitchReadOnlyText = this.textCmdSwitchReadOnly.Text;
+            Settings.Default.CmdSwitchInstanceExecuteText = this.textCmdSwitchInstanceExecute.Text;
+
             Settings.Default.Save();
 
             this.DialogResult = DialogResult.OK;

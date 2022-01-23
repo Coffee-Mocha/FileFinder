@@ -8,5 +8,17 @@
     <Setting Name="FindBase" Type="System.String" Scope="User">
       <Value Profile="(Default)">\\pcfs001\SharedHome\カスタムクラウド_案件用\課金・請求関連\請求明細+雛形</Value>
     </Setting>
+    <Setting Name="CmdSwitchReadOnly" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="CmdSwitchInstanceExecute" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="CmdSwitchReadOnlyText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/r</Value>
+    </Setting>
+    <Setting Name="CmdSwitchInstanceExecuteText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/x</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

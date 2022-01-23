@@ -55,6 +55,8 @@ namespace FileFinder
 
             // 設定の読み込み
             this.textFindBase.Text = Settings.Default.FindBase;
+            this.checkNewProcess.Checked = Settings.Default.CmdSwitchInstanceExecute;
+            this.checkReadOnly.Checked = Settings.Default.CmdSwitchReadOnly;
 
         }
 
@@ -197,7 +199,20 @@ namespace FileFinder
                 // リストビューで選択されている項目
                 foreach (ListViewItem item in this.listFiles.SelectedItems)
                 {
-                    ExecExternalApp(item.Text);
+                    // ExecExternalApp(item.Text);
+
+                    if (item.Text != null)
+                    {
+                        if (this.checkNewProcess.Checked || this.checkReadOnly.Checked)
+                        {
+                            ExecExternalApp(item.Text);
+                        }
+                        else
+                        {
+                            ExecDefaultApp(item.Text);
+                        }
+                    }
+
                 }
             }
         }
@@ -318,11 +333,20 @@ namespace FileFinder
             // アプリを起動して、対象のファイルを開く
             ProcessStartInfo pInfo = new ProcessStartInfo();
             pInfo.FileName = Settings.Default.ExternalAppPath;
-            //pInfo.Arguments = "/x /r \"" + itemx.Text + "\"";
-            if (argfile != null)
+            string cmdswitch = "";
+            if (this.checkNewProcess.Checked)
             {
-                pInfo.Arguments = "/x /r \"" + argfile + "\"";
+                cmdswitch += Settings.Default.CmdSwitchInstanceExecuteText + " ";
             }
+            if (this.checkReadOnly.Checked)
+            {
+                cmdswitch += Settings.Default.CmdSwitchReadOnlyText + " ";
+            }
+
+            //pInfo.Arguments = "/x /r \"" + itemx.Text + "\"";
+            // pInfo.Arguments = "/x /r \"" + argfile + "\"";
+            pInfo.Arguments = cmdswitch + "\"" + argfile + "\"";
+
             try
             {
                 // アプリを起動
@@ -333,6 +357,49 @@ namespace FileFinder
                 //Console.WriteLine(ex.Message);
 
                 string message = ex.Message + Environment.NewLine + pInfo.FileName;
+                string caption = "Error";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                MessageBox.Show(message, caption, buttons);
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex.Message);
+                string message = ex.Message;
+                string caption = "Error";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                MessageBox.Show(message, caption, buttons);
+            }
+        }
+
+        private void ExecDefaultApp(string filename)
+        {
+            ProcessStartInfo pInfo = new ProcessStartInfo();
+            pInfo.UseShellExecute = true;
+            pInfo.ErrorDialog = true;
+            pInfo.FileName = filename;
+
+            try
+            {
+                using (Process process = new Process())
+                {
+                    process.StartInfo = pInfo;
+                    process.Start();
+                }
+            }
+            catch (PlatformNotSupportedException ex)   // 関連付けが見つからない
+            {
+                //Console.WriteLine(ex.Message);
+
+                string message = ex.Message + Environment.NewLine + filename;
+                string caption = "Error";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                MessageBox.Show(message, caption, buttons);
+            }
+            catch (Win32Exception ex)   // 指定したファイルが見つからない
+            {
+                //Console.WriteLine(ex.Message);
+
+                string message = ex.Message + Environment.NewLine + filename;
                 string caption = "Error";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 MessageBox.Show(message, caption, buttons);

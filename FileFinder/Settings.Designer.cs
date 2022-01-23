@@ -46,5 +46,53 @@ namespace FileFinder {
                 this["FindBase"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CmdSwitchReadOnly {
+            get {
+                return ((bool)(this["CmdSwitchReadOnly"]));
+            }
+            set {
+                this["CmdSwitchReadOnly"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CmdSwitchInstanceExecute {
+            get {
+                return ((bool)(this["CmdSwitchInstanceExecute"]));
+            }
+            set {
+                this["CmdSwitchInstanceExecute"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/r")]
+        public string CmdSwitchReadOnlyText {
+            get {
+                return ((string)(this["CmdSwitchReadOnlyText"]));
+            }
+            set {
+                this["CmdSwitchReadOnlyText"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/x")]
+        public string CmdSwitchInstanceExecuteText {
+            get {
+                return ((string)(this["CmdSwitchInstanceExecuteText"]));
+            }
+            set {
+                this["CmdSwitchInstanceExecuteText"] = value;
+            }
+        }
     }
 }

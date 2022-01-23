@@ -45,9 +45,11 @@
             this.aboutAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripListFile = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.propertyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.checkNewProcess = new System.Windows.Forms.CheckBox();
+            this.checkReadOnly = new System.Windows.Forms.CheckBox();
             this.menuStrip.SuspendLayout();
             this.contextMenuStripListFile.SuspendLayout();
             this.SuspendLayout();
@@ -69,9 +71,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listFiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listFiles.HideSelection = false;
-            this.listFiles.Location = new System.Drawing.Point(12, 70);
+            this.listFiles.Location = new System.Drawing.Point(12, 82);
             this.listFiles.Name = "listFiles";
-            this.listFiles.Size = new System.Drawing.Size(719, 196);
+            this.listFiles.Size = new System.Drawing.Size(719, 210);
             this.listFiles.TabIndex = 5;
             this.listFiles.UseCompatibleStateImageBehavior = false;
             // 
@@ -176,7 +178,7 @@
             this.toolStripSeparator1,
             this.propertyToolStripMenuItem});
             this.contextMenuStripListFile.Name = "contextMenuStripListFile";
-            this.contextMenuStripListFile.Size = new System.Drawing.Size(181, 76);
+            this.contextMenuStripListFile.Size = new System.Drawing.Size(134, 54);
             // 
             // openToolStripMenuItem
             // 
@@ -184,22 +186,45 @@
             this.openToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.openToolStripMenuItem.Text = "開く(&O)";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(130, 6);
+            // 
             // propertyToolStripMenuItem
             // 
             this.propertyToolStripMenuItem.Name = "propertyToolStripMenuItem";
             this.propertyToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.propertyToolStripMenuItem.Text = "プロパティ(&R)";
             // 
-            // toolStripSeparator1
+            // checkNewProcess
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.checkNewProcess.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkNewProcess.AutoSize = true;
+            this.checkNewProcess.Location = new System.Drawing.Point(611, 301);
+            this.checkNewProcess.Name = "checkNewProcess";
+            this.checkNewProcess.Size = new System.Drawing.Size(120, 16);
+            this.checkNewProcess.TabIndex = 6;
+            this.checkNewProcess.Text = "新しいプロセスで開く";
+            this.checkNewProcess.UseVisualStyleBackColor = true;
+            // 
+            // checkReadOnly
+            // 
+            this.checkReadOnly.AutoSize = true;
+            this.checkReadOnly.Location = new System.Drawing.Point(465, 301);
+            this.checkReadOnly.Name = "checkReadOnly";
+            this.checkReadOnly.Size = new System.Drawing.Size(119, 16);
+            this.checkReadOnly.TabIndex = 7;
+            this.checkReadOnly.Text = "読み取り専用で開く";
+            this.checkReadOnly.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(743, 278);
+            this.ClientSize = new System.Drawing.Size(743, 329);
+            this.Controls.Add(this.checkReadOnly);
+            this.Controls.Add(this.checkNewProcess);
             this.Controls.Add(this.textFindBase);
             this.Controls.Add(this.buttonBrowse);
             this.Controls.Add(this.buttonFind);
@@ -237,6 +262,8 @@
         private System.Windows.Forms.ToolStripMenuItem propertyToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.CheckBox checkNewProcess;
+        private System.Windows.Forms.CheckBox checkReadOnly;
     }
 }
 
