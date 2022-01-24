@@ -54,7 +54,8 @@ namespace FileFinder
             //this.ContextMenuStrip = this.contextMenuStripListFile;
 
             // 設定の読み込み
-            this.textFindBase.Text = Settings.Default.FindBase;
+            //this.textFindBase.Text = Settings.Default.FindBase;
+            this.textFindBase.Text = GetSettingsFindBase();
             this.checkNewProcess.Checked = Settings.Default.CmdSwitchInstanceExecute;
             this.checkReadOnly.Checked = Settings.Default.CmdSwitchReadOnly;
 
@@ -171,8 +172,7 @@ namespace FileFinder
             //throw new NotImplementedException();
 
             // フォルダ選択ダイアログの表示
-            //folderBrowserDialog.InitialDirectory = Settings.Default.FindBase;
-            this.folderBrowserDialog.SelectedPath = Settings.Default.FindBase;
+            this.folderBrowserDialog.SelectedPath = GetSettingsFindBase();
             this.folderBrowserDialog.ShowNewFolderButton = false;
 
             if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK)
@@ -285,7 +285,6 @@ namespace FileFinder
             // ListViewコントロールのデータをすべて消去します。
             this.listFiles.Items.Clear();
 
-            //string searchRoot = @"C:\Users\mocha\Documents\Visual Studio 2022\Test";
             string searchRoot = (this.textFindBase.Text).TrimEnd(Path.DirectorySeparatorChar);
             string findText = "*" + this.textFind.Text + "*.xl*";
 
@@ -413,5 +412,17 @@ namespace FileFinder
                 MessageBox.Show(message, caption, buttons);
             }
         }
+
+        private string GetSettingsFindBase()
+        {
+            string findbase = Settings.Default.FindBase;
+            if ((findbase == null) | !(Directory.Exists(findbase)))
+            {
+                findbase = Path.GetDirectoryName(Application.ExecutablePath);
+            }
+
+            return findbase;
+        }
+
     }
 }

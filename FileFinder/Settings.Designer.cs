@@ -37,7 +37,7 @@ namespace FileFinder {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\\\\pcfs001\\SharedHome\\カスタムクラウド_案件用\\課金・請求関連\\請求明細+雛形")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string FindBase {
             get {
                 return ((string)(this["FindBase"]));

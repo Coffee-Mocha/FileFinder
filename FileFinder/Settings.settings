@@ -6,7 +6,7 @@
       <Value Profile="(Default)">C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE</Value>
     </Setting>
     <Setting Name="FindBase" Type="System.String" Scope="User">
-      <Value Profile="(Default)">\\pcfs001\SharedHome\カスタムクラウド_案件用\課金・請求関連\請求明細+雛形</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="CmdSwitchReadOnly" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
