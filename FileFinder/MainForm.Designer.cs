@@ -50,6 +50,8 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.checkNewProcess = new System.Windows.Forms.CheckBox();
             this.checkReadOnly = new System.Windows.Forms.CheckBox();
+            this.buttonListUpdate = new System.Windows.Forms.Button();
+            this.buttonFindReset = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.contextMenuStripListFile.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +62,7 @@
             this.textFind.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textFind.Location = new System.Drawing.Point(558, 46);
             this.textFind.Name = "textFind";
-            this.textFind.Size = new System.Drawing.Size(138, 12);
+            this.textFind.Size = new System.Drawing.Size(123, 12);
             this.textFind.TabIndex = 3;
             this.toolTip.SetToolTip(this.textFind, "ファイルを検索する文字を入力します。");
             // 
@@ -71,9 +73,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listFiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listFiles.HideSelection = false;
-            this.listFiles.Location = new System.Drawing.Point(12, 82);
+            this.listFiles.Location = new System.Drawing.Point(12, 81);
             this.listFiles.Name = "listFiles";
-            this.listFiles.Size = new System.Drawing.Size(719, 210);
+            this.listFiles.Size = new System.Drawing.Size(719, 211);
             this.listFiles.TabIndex = 5;
             this.listFiles.UseCompatibleStateImageBehavior = false;
             // 
@@ -84,7 +86,7 @@
             // buttonBrowse
             // 
             this.buttonBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonBrowse.Location = new System.Drawing.Point(497, 41);
+            this.buttonBrowse.Location = new System.Drawing.Point(477, 41);
             this.buttonBrowse.Name = "buttonBrowse";
             this.buttonBrowse.Size = new System.Drawing.Size(47, 23);
             this.buttonBrowse.TabIndex = 2;
@@ -99,16 +101,16 @@
             this.textFindBase.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textFindBase.Location = new System.Drawing.Point(12, 46);
             this.textFindBase.Name = "textFindBase";
-            this.textFindBase.Size = new System.Drawing.Size(479, 12);
+            this.textFindBase.Size = new System.Drawing.Size(459, 12);
             this.textFindBase.TabIndex = 1;
             this.toolTip.SetToolTip(this.textFindBase, "検索するフォルダをフルパスで入力します。");
             // 
             // buttonFind
             // 
             this.buttonFind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonFind.Location = new System.Drawing.Point(702, 41);
+            this.buttonFind.Location = new System.Drawing.Point(687, 41);
             this.buttonFind.Name = "buttonFind";
-            this.buttonFind.Size = new System.Drawing.Size(29, 23);
+            this.buttonFind.Size = new System.Drawing.Size(23, 23);
             this.buttonFind.TabIndex = 4;
             this.buttonFind.Text = "▶";
             this.toolTip.SetToolTip(this.buttonFind, "ファイルの検索を開始します。");
@@ -219,11 +221,33 @@
             this.checkReadOnly.Text = "読み取り専用で開く";
             this.checkReadOnly.UseVisualStyleBackColor = true;
             // 
+            // buttonListUpdate
+            // 
+            this.buttonListUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonListUpdate.Image = ((System.Drawing.Image)(resources.GetObject("buttonListUpdate.Image")));
+            this.buttonListUpdate.Location = new System.Drawing.Point(523, 41);
+            this.buttonListUpdate.Name = "buttonListUpdate";
+            this.buttonListUpdate.Size = new System.Drawing.Size(23, 23);
+            this.buttonListUpdate.TabIndex = 8;
+            this.buttonListUpdate.UseVisualStyleBackColor = true;
+            // 
+            // buttonFindReset
+            // 
+            this.buttonFindReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonFindReset.Image = ((System.Drawing.Image)(resources.GetObject("buttonFindReset.Image")));
+            this.buttonFindReset.Location = new System.Drawing.Point(710, 41);
+            this.buttonFindReset.Name = "buttonFindReset";
+            this.buttonFindReset.Size = new System.Drawing.Size(23, 23);
+            this.buttonFindReset.TabIndex = 9;
+            this.buttonFindReset.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(743, 329);
+            this.Controls.Add(this.buttonFindReset);
+            this.Controls.Add(this.buttonListUpdate);
             this.Controls.Add(this.checkReadOnly);
             this.Controls.Add(this.checkNewProcess);
             this.Controls.Add(this.textFindBase);
@@ -265,6 +289,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.CheckBox checkNewProcess;
         private System.Windows.Forms.CheckBox checkReadOnly;
+        private System.Windows.Forms.Button buttonListUpdate;
+        private System.Windows.Forms.Button buttonFindReset;
     }
 }
 

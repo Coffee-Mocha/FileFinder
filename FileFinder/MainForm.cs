@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +20,7 @@ namespace FileFinder
             InitializeComponent();
 
             this.Load += MainForm_Load;
+            this.FormClosing += MainForm_FormClosing;
 
             // メニュー項目のイベントハンドラ
             this.exitXToolStripMenuItem.Click += ExitXToolStripMenuItem_Click;
@@ -36,11 +38,42 @@ namespace FileFinder
             // ボタンが押されたときにイベントハンドラ
             this.buttonBrowse.Click += ButtonBrowse_Click;
             this.buttonFind.Click += ButtonFind_Click;
+            this.buttonListUpdate.Click += ButtonListUpdate_Click;
+            this.buttonFindReset.Click += ButtonFindReset_Click;
 
             // コンテキストメニューのイベントハンドラ
             this.openToolStripMenuItem.Click += OpenToolStripMenuItem_Click;
             this.propertyToolStripMenuItem.Click += PropertyToolStripMenuItem_Click;
 
+        }
+
+        private void ButtonFindReset_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+            this.textFind.Text = "";
+
+            // リストビューを更新
+            RefreshListFiles();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //throw new NotImplementedException();
+
+            if (Directory.Exists(this.textFindBase.Text))
+            {
+                Settings.Default.FindBase = (this.textFindBase.Text).TrimEnd(Path.DirectorySeparatorChar);
+                Settings.Default.Save();
+            }
+        }
+
+        private void ButtonListUpdate_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+            // リストビューを更新
+            RefreshListFiles();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -155,6 +188,7 @@ namespace FileFinder
             {
                 // 検索ボックスに文字が入力された
                 this.buttonFind.Visible = true;     // 検索ボタンを表示
+                this.buttonFindReset.Visible = false;   // リセットボタンを非表示
             }
         }
 
@@ -165,6 +199,7 @@ namespace FileFinder
             // リストビューを更新
             RefreshListFiles();
 
+            this.buttonFindReset.Visible = true;    // リセットボタンを表示
         }
 
         private void ButtonBrowse_Click(object sender, EventArgs e)
@@ -223,13 +258,22 @@ namespace FileFinder
 
             if (Directory.Exists(this.textFindBase.Text))
             {
-                Settings.Default.FindBase = (this.textFindBase.Text).TrimEnd(Path.DirectorySeparatorChar);
-                Settings.Default.Save();
+                //Settings.Default.FindBase = (this.textFindBase.Text).TrimEnd(Path.DirectorySeparatorChar);
+                //Settings.Default.Save();
 
+                // [更新]ボタンを表示
+                this.buttonListUpdate.Visible = true;
+            }
+            else
+            {
+                // [更新]ボタンを非表示
+                this.buttonListUpdate.Visible = false;
             }
 
+            /*
             // リストビューを更新
             RefreshListFiles();
+            */
         }
 
         private void OptionOToolStripMenuItem_Click(object sender, EventArgs e)
@@ -282,6 +326,8 @@ namespace FileFinder
         // ListViewコントロールのデータを更新します。
         private void RefreshListFiles()
         {
+            this.buttonFindReset.Visible = false;   // リセットボタンを非表示
+
             // ListViewコントロールのデータをすべて消去します。
             this.listFiles.Items.Clear();
 
@@ -293,10 +339,10 @@ namespace FileFinder
                 try
                 {
                     IEnumerable<string> files = Directory.EnumerateFiles(
-                      searchRoot,                   // 検索開始ディレクトリ
-                      findText,                     // 検索パターン
-                      SearchOption.AllDirectories   // サブ・ディレクトも含める
-                      );
+                        searchRoot,                   // 検索開始ディレクトリ
+                        findText,                     // 検索パターン
+                        SearchOption.AllDirectories   // サブ・ディレクトも含める
+                    );
 
                     foreach (string file in files)
                     {
@@ -306,13 +352,43 @@ namespace FileFinder
 
                         //Console.WriteLine(file);
                         string[] item1 = {
-                        file,
-                        fileName,
-                        dt.ToString()
-                    };
+                            file,
+                            fileName,
+                            dt.ToString()
+                        };
                         this.listFiles.Items.Add(new ListViewItem(item1));
                     }
+                }
+                catch (ArgumentException e)
+                {
+                    string message = e.Message;
 
+                    char[] invalidPathChars = Path.GetInvalidPathChars();
+                    if (invalidPathChars.Length > 0)
+                    {
+                        message += Environment.NewLine + invalidPathChars.ToString();
+                    }
+                    else
+                    {
+                        message += Environment.NewLine + "検索パターンを確認してください。";
+                    }
+                    string caption = "ArgumentException Error";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    MessageBox.Show(message, caption, buttons);
+                }
+                catch (SecurityException e)
+                {
+                    string message = e.Message;
+                    string caption = "SecurityException Error";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    MessageBox.Show(message, caption, buttons);
+                }
+                catch (UnauthorizedAccessException uAEx)
+                {
+                    string message = uAEx.Message;
+                    string caption = "UnauthorizedAccessException Error";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    MessageBox.Show(message, caption, buttons);
                 }
                 catch (Exception e)
                 {
@@ -356,7 +432,7 @@ namespace FileFinder
                 //Console.WriteLine(ex.Message);
 
                 string message = ex.Message + Environment.NewLine + pInfo.FileName;
-                string caption = "Error";
+                string caption = "Win32Exception Error";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 MessageBox.Show(message, caption, buttons);
             }
@@ -390,7 +466,7 @@ namespace FileFinder
                 //Console.WriteLine(ex.Message);
 
                 string message = ex.Message + Environment.NewLine + filename;
-                string caption = "Error";
+                string caption = "PlatformNotSupportedException Error";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 MessageBox.Show(message, caption, buttons);
             }
@@ -399,7 +475,7 @@ namespace FileFinder
                 //Console.WriteLine(ex.Message);
 
                 string message = ex.Message + Environment.NewLine + filename;
-                string caption = "Error";
+                string caption = "Win32Exception Error";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 MessageBox.Show(message, caption, buttons);
             }
