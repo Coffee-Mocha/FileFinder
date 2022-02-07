@@ -153,19 +153,17 @@ namespace FileFinder
                 // リストビューで選択されている項目
                 ListViewItem itemx = new ListViewItem();
                 itemx = this.listFiles.SelectedItems[0];
-
-                ExecExternalApp(itemx.Text);
                 */
 
                 // リストビューで選択されている項目
                 foreach (ListViewItem item in this.listFiles.SelectedItems)
                 {
-                    ExecExternalApp(item.Text);
+                    ExecApp(item.Text);
                 }
             }
         }
 
-            private void AboutAToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutAToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
 
@@ -227,27 +225,15 @@ namespace FileFinder
                 // リストビューで選択されている項目
                 ListViewItem itemx = new ListViewItem();
                 itemx = this.listFiles.SelectedItems[0];
-
-                ExecExternalApp(itemx.Text);
                 */
 
                 // リストビューで選択されている項目
                 foreach (ListViewItem item in this.listFiles.SelectedItems)
                 {
-                    // ExecExternalApp(item.Text);
-
                     if (item.Text != null)
                     {
-                        if (this.checkNewProcess.Checked || this.checkReadOnly.Checked)
-                        {
-                            ExecExternalApp(item.Text);
-                        }
-                        else
-                        {
-                            ExecDefaultApp(item.Text);
-                        }
+                        ExecApp(item.Text);
                     }
-
                 }
             }
         }
@@ -291,7 +277,6 @@ namespace FileFinder
 
             this.Close();
         }
-
 
         // ListViewコントロールを初期化します。
         private void InitializeListFiles()
@@ -397,61 +382,51 @@ namespace FileFinder
             }
         }
 
-        private void ExecExternalApp(string argfile)
+        private void ExecApp(string filepath)
         {
-            /*
-            // リストビューで選択されている項目
-            ListViewItem itemx = new ListViewItem();
-            itemx = this.listFiles.SelectedItems[0];
-            */
+            // ファイルの開き方のチェック状態
+            bool newprocess = this.checkNewProcess.Checked;     // 新しいプロセスで起動
+            bool ro = this.checkReadOnly.Checked;         // 読み取り専用で開く
 
-            // アプリを起動して、対象のファイルを開く
             ProcessStartInfo pInfo = new ProcessStartInfo();
-            pInfo.FileName = Settings.Default.ExternalAppPath;
-            string cmdswitch = "";
-            if (this.checkNewProcess.Checked)
-            {
-                cmdswitch += Settings.Default.CmdSwitchInstanceExecuteText + " ";
-            }
-            if (this.checkReadOnly.Checked)
-            {
-                cmdswitch += Settings.Default.CmdSwitchReadOnlyText + " ";
-            }
 
-            //pInfo.Arguments = "/x /r \"" + itemx.Text + "\"";
-            // pInfo.Arguments = "/x /r \"" + argfile + "\"";
-            pInfo.Arguments = cmdswitch + "\"" + argfile + "\"";
-
-            try
+            string openfile = filepath;
+            if (newprocess || ro)
             {
-                // アプリを起動
-                Process.Start(pInfo);
-            }
-            catch (Win32Exception ex)   // 指定したファイルが見つからない
-            {
-                //Console.WriteLine(ex.Message);
+                if (filepath.Length >= 260)
+                {
+                    string message = "ファイルのパスが260文字を超えています。";
+                    message += Environment.NewLine;
+                    message += Environment.NewLine + "ファイルのコピーを開きます。";
+                    string caption = "ファイルを開く";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    MessageBox.Show(message, caption, buttons);
 
-                string message = ex.Message + Environment.NewLine + pInfo.FileName;
-                string caption = "Win32Exception Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBox.Show(message, caption, buttons);
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine(ex.Message);
-                string message = ex.Message;
-                string caption = "Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBox.Show(message, caption, buttons);
-            }
-        }
+                    openfile = CopyTemporaryFile(filepath);
+                }
 
-        private void ExecDefaultApp(string filename)
-        {
-            ProcessStartInfo pInfo = new ProcessStartInfo();
-            pInfo.UseShellExecute = true;
-            pInfo.ErrorDialog = true;
-            pInfo.FileName = filename;
+                // アプリを起動して、対象のファイルを開く
+                pInfo.FileName = Settings.Default.ExternalAppPath;
+                string cmdswitch = "";
+                if (this.checkNewProcess.Checked)
+                {
+                    cmdswitch += Settings.Default.CmdSwitchInstanceExecuteText + " ";
+                }
+                if (this.checkReadOnly.Checked)
+                {
+                    cmdswitch += Settings.Default.CmdSwitchReadOnlyText + " ";
+                }
+
+                //pInfo.Arguments = "/x /r \"" + itemx.Text + "\"";
+                // pInfo.Arguments = "/x /r \"" + openfile + "\"";
+                pInfo.Arguments = cmdswitch + "\"" + openfile + "\"";
+            }
+            else
+            {
+                pInfo.UseShellExecute = true;
+                pInfo.ErrorDialog = true;
+                pInfo.FileName = openfile;
+            }
 
             try
             {
@@ -465,7 +440,7 @@ namespace FileFinder
             {
                 //Console.WriteLine(ex.Message);
 
-                string message = ex.Message + Environment.NewLine + filename;
+                string message = ex.Message + Environment.NewLine + openfile;
                 string caption = "PlatformNotSupportedException Error";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 MessageBox.Show(message, caption, buttons);
@@ -474,7 +449,7 @@ namespace FileFinder
             {
                 //Console.WriteLine(ex.Message);
 
-                string message = ex.Message + Environment.NewLine + filename;
+                string message = ex.Message + Environment.NewLine + openfile;
                 string caption = "Win32Exception Error";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 MessageBox.Show(message, caption, buttons);
@@ -500,5 +475,41 @@ namespace FileFinder
             return findbase;
         }
 
+        private string CopyTemporaryFile(string fileName)
+        {
+            // 一時ファイルへのコピー
+
+            FileInfo sourcefile = new FileInfo(fileName);
+            //DirectoryInfo di = new DirectoryInfo(Environment.CurrentDirectory);
+            DirectoryInfo di = new DirectoryInfo(Path.GetDirectoryName(Application.ExecutablePath));
+            string destname = di.FullName + @"\~" + sourcefile.Name;
+
+            try
+            {
+                sourcefile.CopyTo(destname, true);
+            }
+            /*
+            catch (IOException e)   // エラーが発生したか、リンク先ファイルが既に存在します。
+            {
+
+            }
+            catch (PathTooLongException e)  // 指定したパス、ファイル名、またはその両方がシステム定義の最大長を超えています。
+            {
+
+            }
+            */
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex.Message);
+                string message = ex.Message;
+                string caption = "Error";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                MessageBox.Show(message, caption, buttons);
+
+                destname = null;
+            }
+
+            return destname;
+        }
     }
 }

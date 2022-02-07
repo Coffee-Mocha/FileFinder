@@ -29,6 +29,7 @@ namespace FileFinder
         {
             //throw new NotImplementedException();
 
+            // 設定の読み込み
             this.textProcessPath.Text = Settings.Default.ExternalAppPath;
             this.checkCmdSwitchReadOnly.Checked = Settings.Default.CmdSwitchReadOnly;
             this.checkCmdSwitchInstanceExecute.Checked = Settings.Default.CmdSwitchInstanceExecute;
