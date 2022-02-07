@@ -240,6 +240,7 @@
             this.buttonFindReset.Size = new System.Drawing.Size(23, 23);
             this.buttonFindReset.TabIndex = 9;
             this.buttonFindReset.UseVisualStyleBackColor = true;
+            this.buttonFindReset.Visible = false;
             // 
             // MainForm
             // 

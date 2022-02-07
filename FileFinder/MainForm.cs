@@ -393,6 +393,9 @@ namespace FileFinder
             string openfile = filepath;
             if (newprocess || ro)
             {
+                // アプリを起動して、対象のファイルを開く
+
+                // ファイルのパスが260文字を超えているとき
                 if (filepath.Length >= 260)
                 {
                     string message = "ファイルのパスが260文字を超えています。";
@@ -405,14 +408,16 @@ namespace FileFinder
                     openfile = CopyTemporaryFile(filepath);
                 }
 
-                // アプリを起動して、対象のファイルを開く
+                // 起動するアプリ
                 pInfo.FileName = Settings.Default.ExternalAppPath;
+
+                // コマンドオプションの指定
                 string cmdswitch = "";
-                if (this.checkNewProcess.Checked)
+                if (newprocess)
                 {
                     cmdswitch += Settings.Default.CmdSwitchInstanceExecuteText + " ";
                 }
-                if (this.checkReadOnly.Checked)
+                if (ro)
                 {
                     cmdswitch += Settings.Default.CmdSwitchReadOnlyText + " ";
                 }
@@ -423,44 +428,46 @@ namespace FileFinder
             }
             else
             {
+                // ファイルの関連付けで開く
                 pInfo.UseShellExecute = true;
                 pInfo.ErrorDialog = true;
                 pInfo.FileName = openfile;
             }
 
-            try
+            // プロセスの実行
+            using (Process process = new Process())
             {
-                using (Process process = new Process())
+                try
                 {
                     process.StartInfo = pInfo;
                     process.Start();
                 }
-            }
-            catch (PlatformNotSupportedException ex)   // 関連付けが見つからない
-            {
-                //Console.WriteLine(ex.Message);
+                catch (PlatformNotSupportedException ex)   // 関連付けが見つからない
+                {
+                    //Console.WriteLine(ex.Message);
 
-                string message = ex.Message + Environment.NewLine + openfile;
-                string caption = "PlatformNotSupportedException Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBox.Show(message, caption, buttons);
-            }
-            catch (Win32Exception ex)   // 指定したファイルが見つからない
-            {
-                //Console.WriteLine(ex.Message);
+                    string message = ex.Message + Environment.NewLine + openfile;
+                    string caption = "PlatformNotSupportedException Error";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    MessageBox.Show(message, caption, buttons);
+                }
+                catch (Win32Exception ex)   // 指定したファイルが見つからない
+                {
+                    //Console.WriteLine(ex.Message);
 
-                string message = ex.Message + Environment.NewLine + openfile;
-                string caption = "Win32Exception Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBox.Show(message, caption, buttons);
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine(ex.Message);
-                string message = ex.Message;
-                string caption = "Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                MessageBox.Show(message, caption, buttons);
+                    string message = ex.Message + Environment.NewLine + openfile;
+                    string caption = "Win32Exception Error";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    MessageBox.Show(message, caption, buttons);
+                }
+                catch (Exception ex)
+                {
+                    //Console.WriteLine(ex.Message);
+                    string message = ex.Message;
+                    string caption = "Error";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    MessageBox.Show(message, caption, buttons);
+                }
             }
         }
 
@@ -475,10 +482,9 @@ namespace FileFinder
             return findbase;
         }
 
+        // 一時ファイルへのコピー
         private string CopyTemporaryFile(string fileName)
         {
-            // 一時ファイルへのコピー
-
             FileInfo sourcefile = new FileInfo(fileName);
             //DirectoryInfo di = new DirectoryInfo(Environment.CurrentDirectory);
             DirectoryInfo di = new DirectoryInfo(Path.GetDirectoryName(Application.ExecutablePath));
