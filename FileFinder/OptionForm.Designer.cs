@@ -44,6 +44,10 @@ namespace FileFinder
             this.labelCmdSwitchInstanceExecute = new System.Windows.Forms.Label();
             this.textCmdSwitchInstanceExecute = new System.Windows.Forms.TextBox();
             this.textCmdSwitchReadOnly = new System.Windows.Forms.TextBox();
+            this.buttonMicrosoft365ExcelPath = new System.Windows.Forms.Button();
+            this.buttonOffice2016ExcelPath = new System.Windows.Forms.Button();
+            this.buttonResetCmdSwitchReadOnly = new System.Windows.Forms.Button();
+            this.buttonResetCmdSwitchInstanceExecute = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,7 +82,7 @@ namespace FileFinder
             // OK
             // 
             this.OK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OK.Location = new System.Drawing.Point(444, 194);
+            this.OK.Location = new System.Drawing.Point(444, 246);
             this.OK.Name = "OK";
             this.OK.Size = new System.Drawing.Size(75, 23);
             this.OK.TabIndex = 0;
@@ -88,7 +92,7 @@ namespace FileFinder
             // CANCEL
             // 
             this.CANCEL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CANCEL.Location = new System.Drawing.Point(525, 194);
+            this.CANCEL.Location = new System.Drawing.Point(525, 246);
             this.CANCEL.Name = "CANCEL";
             this.CANCEL.Size = new System.Drawing.Size(75, 23);
             this.CANCEL.TabIndex = 1;
@@ -98,20 +102,20 @@ namespace FileFinder
             // labelCommandLineSwitch
             // 
             this.labelCommandLineSwitch.AutoSize = true;
-            this.labelCommandLineSwitch.Location = new System.Drawing.Point(12, 89);
+            this.labelCommandLineSwitch.Location = new System.Drawing.Point(12, 116);
             this.labelCommandLineSwitch.Name = "labelCommandLineSwitch";
             this.labelCommandLineSwitch.Size = new System.Drawing.Size(185, 12);
-            this.labelCommandLineSwitch.TabIndex = 6;
+            this.labelCommandLineSwitch.TabIndex = 7;
             this.labelCommandLineSwitch.Text = "起動オプション (コマンドライン スイッチ):";
             // 
             // checkCmdSwitchReadOnly
             // 
             this.checkCmdSwitchReadOnly.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkCmdSwitchReadOnly.AutoSize = true;
-            this.checkCmdSwitchReadOnly.Location = new System.Drawing.Point(211, 8);
+            this.checkCmdSwitchReadOnly.Location = new System.Drawing.Point(281, 6);
             this.checkCmdSwitchReadOnly.Name = "checkCmdSwitchReadOnly";
             this.checkCmdSwitchReadOnly.Size = new System.Drawing.Size(130, 16);
-            this.checkCmdSwitchReadOnly.TabIndex = 7;
+            this.checkCmdSwitchReadOnly.TabIndex = 2;
             this.checkCmdSwitchReadOnly.Text = "デフォルトで有効にする";
             this.checkCmdSwitchReadOnly.UseVisualStyleBackColor = true;
             // 
@@ -119,74 +123,125 @@ namespace FileFinder
             // 
             this.checkCmdSwitchInstanceExecute.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkCmdSwitchInstanceExecute.AutoSize = true;
-            this.checkCmdSwitchInstanceExecute.Location = new System.Drawing.Point(211, 42);
+            this.checkCmdSwitchInstanceExecute.Location = new System.Drawing.Point(281, 39);
             this.checkCmdSwitchInstanceExecute.Name = "checkCmdSwitchInstanceExecute";
             this.checkCmdSwitchInstanceExecute.Size = new System.Drawing.Size(130, 16);
-            this.checkCmdSwitchInstanceExecute.TabIndex = 8;
+            this.checkCmdSwitchInstanceExecute.TabIndex = 6;
             this.checkCmdSwitchInstanceExecute.Text = "デフォルトで有効にする";
             this.checkCmdSwitchInstanceExecute.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.30065F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.69935F));
-            this.tableLayoutPanel1.Controls.Add(this.checkCmdSwitchReadOnly, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.checkCmdSwitchInstanceExecute, 2, 1);
+            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 58F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.50903F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.tableLayoutPanel1.Controls.Add(this.checkCmdSwitchReadOnly, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.checkCmdSwitchInstanceExecute, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelCmdSwitchReadOnly, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelCmdSwitchInstanceExecute, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.textCmdSwitchInstanceExecute, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.textCmdSwitchReadOnly, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(25, 104);
+            this.tableLayoutPanel1.Controls.Add(this.buttonResetCmdSwitchReadOnly, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.buttonResetCmdSwitchInstanceExecute, 5, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(25, 131);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(459, 67);
-            this.tableLayoutPanel1.TabIndex = 9;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(566, 67);
+            this.tableLayoutPanel1.TabIndex = 8;
             // 
             // labelCmdSwitchReadOnly
             // 
             this.labelCmdSwitchReadOnly.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelCmdSwitchReadOnly.AutoSize = true;
-            this.labelCmdSwitchReadOnly.Location = new System.Drawing.Point(3, 10);
+            this.labelCmdSwitchReadOnly.Location = new System.Drawing.Point(3, 8);
             this.labelCmdSwitchReadOnly.Name = "labelCmdSwitchReadOnly";
             this.labelCmdSwitchReadOnly.Size = new System.Drawing.Size(72, 12);
-            this.labelCmdSwitchReadOnly.TabIndex = 9;
+            this.labelCmdSwitchReadOnly.TabIndex = 0;
             this.labelCmdSwitchReadOnly.Text = "読み取り専用";
             // 
             // labelCmdSwitchInstanceExecute
             // 
             this.labelCmdSwitchInstanceExecute.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelCmdSwitchInstanceExecute.AutoSize = true;
-            this.labelCmdSwitchInstanceExecute.Location = new System.Drawing.Point(3, 38);
+            this.labelCmdSwitchInstanceExecute.Location = new System.Drawing.Point(3, 41);
             this.labelCmdSwitchInstanceExecute.Name = "labelCmdSwitchInstanceExecute";
-            this.labelCmdSwitchInstanceExecute.Size = new System.Drawing.Size(146, 24);
-            this.labelCmdSwitchInstanceExecute.TabIndex = 10;
+            this.labelCmdSwitchInstanceExecute.Size = new System.Drawing.Size(197, 12);
+            this.labelCmdSwitchInstanceExecute.TabIndex = 4;
             this.labelCmdSwitchInstanceExecute.Text = "新しいインスタンスを (別プロセスで) 起動";
             // 
             // textCmdSwitchInstanceExecute
             // 
             this.textCmdSwitchInstanceExecute.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textCmdSwitchInstanceExecute.Location = new System.Drawing.Point(156, 40);
+            this.textCmdSwitchInstanceExecute.Location = new System.Drawing.Point(223, 38);
             this.textCmdSwitchInstanceExecute.Name = "textCmdSwitchInstanceExecute";
             this.textCmdSwitchInstanceExecute.Size = new System.Drawing.Size(47, 19);
-            this.textCmdSwitchInstanceExecute.TabIndex = 11;
+            this.textCmdSwitchInstanceExecute.TabIndex = 5;
             // 
             // textCmdSwitchReadOnly
             // 
             this.textCmdSwitchReadOnly.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textCmdSwitchReadOnly.Location = new System.Drawing.Point(156, 7);
+            this.textCmdSwitchReadOnly.Location = new System.Drawing.Point(223, 4);
             this.textCmdSwitchReadOnly.Name = "textCmdSwitchReadOnly";
             this.textCmdSwitchReadOnly.Size = new System.Drawing.Size(47, 19);
-            this.textCmdSwitchReadOnly.TabIndex = 12;
+            this.textCmdSwitchReadOnly.TabIndex = 1;
+            // 
+            // buttonMicrosoft365ExcelPath
+            // 
+            this.buttonMicrosoft365ExcelPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMicrosoft365ExcelPath.Location = new System.Drawing.Point(381, 73);
+            this.buttonMicrosoft365ExcelPath.Name = "buttonMicrosoft365ExcelPath";
+            this.buttonMicrosoft365ExcelPath.Size = new System.Drawing.Size(75, 23);
+            this.buttonMicrosoft365ExcelPath.TabIndex = 5;
+            this.buttonMicrosoft365ExcelPath.Text = "Microsoft365";
+            this.buttonMicrosoft365ExcelPath.UseVisualStyleBackColor = true;
+            // 
+            // buttonOffice2016ExcelPath
+            // 
+            this.buttonOffice2016ExcelPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonOffice2016ExcelPath.Location = new System.Drawing.Point(462, 73);
+            this.buttonOffice2016ExcelPath.Name = "buttonOffice2016ExcelPath";
+            this.buttonOffice2016ExcelPath.Size = new System.Drawing.Size(75, 23);
+            this.buttonOffice2016ExcelPath.TabIndex = 6;
+            this.buttonOffice2016ExcelPath.Text = "Office2016";
+            this.buttonOffice2016ExcelPath.UseVisualStyleBackColor = true;
+            // 
+            // buttonResetCmdSwitchReadOnly
+            // 
+            this.buttonResetCmdSwitchReadOnly.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonResetCmdSwitchReadOnly.AutoSize = true;
+            this.buttonResetCmdSwitchReadOnly.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonResetCmdSwitchReadOnly.Location = new System.Drawing.Point(501, 3);
+            this.buttonResetCmdSwitchReadOnly.Name = "buttonResetCmdSwitchReadOnly";
+            this.buttonResetCmdSwitchReadOnly.Size = new System.Drawing.Size(47, 22);
+            this.buttonResetCmdSwitchReadOnly.TabIndex = 3;
+            this.buttonResetCmdSwitchReadOnly.Text = "リセット";
+            this.buttonResetCmdSwitchReadOnly.UseVisualStyleBackColor = true;
+            // 
+            // buttonResetCmdSwitchInstanceExecute
+            // 
+            this.buttonResetCmdSwitchInstanceExecute.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonResetCmdSwitchInstanceExecute.AutoSize = true;
+            this.buttonResetCmdSwitchInstanceExecute.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonResetCmdSwitchInstanceExecute.Location = new System.Drawing.Point(501, 36);
+            this.buttonResetCmdSwitchInstanceExecute.Name = "buttonResetCmdSwitchInstanceExecute";
+            this.buttonResetCmdSwitchInstanceExecute.Size = new System.Drawing.Size(47, 22);
+            this.buttonResetCmdSwitchInstanceExecute.TabIndex = 7;
+            this.buttonResetCmdSwitchInstanceExecute.Text = "リセット";
+            this.buttonResetCmdSwitchInstanceExecute.UseVisualStyleBackColor = true;
             // 
             // OptionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(612, 229);
+            this.ClientSize = new System.Drawing.Size(612, 281);
+            this.Controls.Add(this.buttonOffice2016ExcelPath);
+            this.Controls.Add(this.buttonMicrosoft365ExcelPath);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.labelCommandLineSwitch);
             this.Controls.Add(this.CANCEL);
@@ -196,7 +251,7 @@ namespace FileFinder
             this.Controls.Add(this.labelProcessPath);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(500, 260);
+            this.MinimumSize = new System.Drawing.Size(600, 300);
             this.Name = "OptionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "オプション";
@@ -224,5 +279,9 @@ namespace FileFinder
         private System.Windows.Forms.Label labelCmdSwitchInstanceExecute;
         private System.Windows.Forms.TextBox textCmdSwitchInstanceExecute;
         private System.Windows.Forms.TextBox textCmdSwitchReadOnly;
+        private System.Windows.Forms.Button buttonMicrosoft365ExcelPath;
+        private System.Windows.Forms.Button buttonOffice2016ExcelPath;
+        private System.Windows.Forms.Button buttonResetCmdSwitchReadOnly;
+        private System.Windows.Forms.Button buttonResetCmdSwitchInstanceExecute;
     }
 }

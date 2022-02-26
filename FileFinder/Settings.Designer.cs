@@ -12,7 +12,7 @@ namespace FileFinder {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.1.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -92,6 +92,42 @@ namespace FileFinder {
             }
             set {
                 this["CmdSwitchInstanceExecuteText"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files\\Microsoft Office\\root\\Office16\\EXCEL.EXE")]
+        public string StanderdMicrosoft365ExcelPath {
+            get {
+                return ((string)(this["StanderdMicrosoft365ExcelPath"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files\\Microsoft Office\\Office16\\EXCEL.EXE")]
+        public string StanderdOffice2016ExcelPath {
+            get {
+                return ((string)(this["StanderdOffice2016ExcelPath"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/r")]
+        public string DefaultCmdSwitchReadOnlyText {
+            get {
+                return ((string)(this["DefaultCmdSwitchReadOnlyText"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/x")]
+        public string DefaultCmdSwitchInstanceExecuteText {
+            get {
+                return ((string)(this["DefaultCmdSwitchInstanceExecuteText"]));
             }
         }
     }

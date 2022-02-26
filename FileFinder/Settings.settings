@@ -20,5 +20,17 @@
     <Setting Name="CmdSwitchInstanceExecuteText" Type="System.String" Scope="User">
       <Value Profile="(Default)">/x</Value>
     </Setting>
+    <Setting Name="StanderdMicrosoft365ExcelPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE</Value>
+    </Setting>
+    <Setting Name="StanderdOffice2016ExcelPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Program Files\Microsoft Office\Office16\EXCEL.EXE</Value>
+    </Setting>
+    <Setting Name="DefaultCmdSwitchReadOnlyText" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/r</Value>
+    </Setting>
+    <Setting Name="DefaultCmdSwitchInstanceExecuteText" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/x</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

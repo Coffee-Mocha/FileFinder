@@ -22,7 +22,38 @@ namespace FileFinder
             this.CANCEL.Click += CANCEL_Click;
             this.OK.Click += OK_Click;
             this.buttonProcessPathReference.Click += ButtonProcessPathReference_Click;
+            this.buttonMicrosoft365ExcelPath.Click += ButtonMicrosoft365ExcelPath_Click;
+            this.buttonOffice2016ExcelPath.Click += ButtonOffice2016ExcelPath_Click;
+            this.buttonResetCmdSwitchReadOnly.Click += ButtonResetCmdSwitchReadOnly_Click;
+            this.buttonResetCmdSwitchInstanceExecute.Click += ButtonResetCmdSwitchInstanceExecute_Click;
+        }
 
+        private void ButtonResetCmdSwitchInstanceExecute_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+            this.textCmdSwitchInstanceExecute.Text = Settings.Default.DefaultCmdSwitchInstanceExecuteText;
+        }
+
+        private void ButtonResetCmdSwitchReadOnly_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+            this.textCmdSwitchReadOnly.Text = Settings.Default.DefaultCmdSwitchReadOnlyText;
+        }
+
+        private void ButtonOffice2016ExcelPath_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+            this.textProcessPath.Text = Settings.Default.StanderdOffice2016ExcelPath;
+        }
+
+        private void ButtonMicrosoft365ExcelPath_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+            this.textProcessPath.Text = Settings.Default.StanderdMicrosoft365ExcelPath;
         }
 
         private void OptionForm_Load(object sender, EventArgs e)
