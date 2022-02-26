@@ -405,7 +405,7 @@ namespace FileFinder
                     MessageBoxButtons buttons = MessageBoxButtons.OK;
                     MessageBox.Show(message, caption, buttons);
 
-                    openfile = CopyTemporaryFile(filepath);
+                    openfile = CopyTemporaryFile(@"\\?\" + filepath);
                 }
 
                 // 起動するアプリ
