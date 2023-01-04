@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("XLSOpener")]
-[assembly: AssemblyCopyright("Copyright ©  2022 CoffieeSpoon")]
+[assembly: AssemblyCopyright("Copyright ©  2022 CoffeeSpoon")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

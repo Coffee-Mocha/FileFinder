@@ -10,6 +10,8 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
+using Application = System.Windows.Forms.Application;
 
 namespace FileFinder
 {
@@ -24,6 +26,7 @@ namespace FileFinder
 
             // メニュー項目のイベントハンドラ
             this.exitXToolStripMenuItem.Click += ExitXToolStripMenuItem_Click;
+            this.copypathToolStripMenuItem.Click += CopypathToolStripMenuItem_Click;
             this.OptionOToolStripMenuItem.Click += OptionOToolStripMenuItem_Click;
             this.aboutAToolStripMenuItem.Click += AboutAToolStripMenuItem_Click;
 
@@ -42,8 +45,9 @@ namespace FileFinder
             this.buttonFindReset.Click += ButtonFindReset_Click;
 
             // コンテキストメニューのイベントハンドラ
-            this.openToolStripMenuItem.Click += OpenToolStripMenuItem_Click;
-            this.propertyToolStripMenuItem.Click += PropertyToolStripMenuItem_Click;
+            this.openToolStripContextMenuItem.Click += OpenToolStripMenuItem_Click;
+            this.copypathToolStripContextMenuItem.Click += CopypathToolStripMenuItem_Click;
+            this.propertyToolStripContextMenuItem.Click += PropertyToolStripMenuItem_Click;
 
         }
 
@@ -118,31 +122,6 @@ namespace FileFinder
             }
         }
 
-        private void PropertyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //throw new NotImplementedException();
-
-            if (this.listFiles.SelectedItems.Count > 0)
-            {
-                // リストビューで選択されている項目
-                foreach (ListViewItem item in this.listFiles.SelectedItems)
-                {
-                    // ファイルのプロパティフォームを表示
-                    FilePropertyForm formeProperty = new FilePropertyForm();
-                    formeProperty.FileName = item.Text;
-                    //formeProperty.Show();
-                    
-                    //フォーム上の座標でマウスポインタの位置を取得する
-                    //画面座標でマウスポインタの位置を取得する
-                    System.Drawing.Point sp = System.Windows.Forms.Cursor.Position;
-                    //画面座標をクライアント座標に変換する
-                    //System.Drawing.Point cp = this.PointToClient(sp);
-                    formeProperty.location = sp;
-                    formeProperty.Show();
-                }
-            }
-        }
-
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -159,6 +138,49 @@ namespace FileFinder
                 foreach (ListViewItem item in this.listFiles.SelectedItems)
                 {
                     ExecApp(item.Text);
+                }
+            }
+        }
+
+        private void CopypathToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+            // リストビューで選択されている項目
+            foreach (ListViewItem item in this.listFiles.SelectedItems)
+            {
+                // パスをクリップボードにコピー
+                // Clipboard.SetText(item.Text);
+                // Clipboard.SetDataObject(item.Text);
+                DataObject data = new DataObject();
+                data.SetData(item.Text);
+                Clipboard.SetDataObject(data, true);
+            }
+        }
+
+        private void PropertyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+            if (this.listFiles.SelectedItems.Count > 0)
+            {
+                // リストビューで選択されている項目
+                foreach (ListViewItem item in listFiles.SelectedItems)
+                {
+                    // ファイルのプロパティフォームを表示
+                    FilePropertyForm formProperty = new FilePropertyForm
+                    {
+                        FileName = item.Text
+                    };
+                    //formProperty.Show();
+
+                    //フォーム上の座標でマウスポインタの位置を取得する
+                    //画面座標でマウスポインタの位置を取得する
+                    System.Drawing.Point sp = System.Windows.Forms.Cursor.Position;
+                    //画面座標をクライアント座標に変換する
+                    //System.Drawing.Point cp = this.PointToClient(sp);
+                    formProperty.location = sp;
+                    formProperty.Show();
                 }
             }
         }
