@@ -39,6 +39,8 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copypathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OptionOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,15 +48,14 @@
             this.contextMenuStripListFile = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openToolStripContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.copypathToolStripContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertyToolStripContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.checkNewProcess = new System.Windows.Forms.CheckBox();
             this.checkReadOnly = new System.Windows.Forms.CheckBox();
             this.buttonListUpdate = new System.Windows.Forms.Button();
             this.buttonFindReset = new System.Windows.Forms.Button();
-            this.copypathToolStripContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copypathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.contextMenuStripListFile.SuspendLayout();
             this.SuspendLayout();
@@ -145,8 +146,25 @@
             // 
             this.exitXToolStripMenuItem.Name = "exitXToolStripMenuItem";
             this.exitXToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.exitXToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitXToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.exitXToolStripMenuItem.Text = "終了(&X)";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.copypathToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.editToolStripMenuItem.Text = "編集(&E)";
+            // 
+            // copypathToolStripMenuItem
+            // 
+            this.copypathToolStripMenuItem.Name = "copypathToolStripMenuItem";
+            this.copypathToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.C)));
+            this.copypathToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.copypathToolStripMenuItem.Text = "パスのコピー(&C)";
             // 
             // toolsTToolStripMenuItem
             // 
@@ -160,7 +178,7 @@
             // 
             this.OptionOToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OptionOToolStripMenuItem.Image")));
             this.OptionOToolStripMenuItem.Name = "OptionOToolStripMenuItem";
-            this.OptionOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.OptionOToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.OptionOToolStripMenuItem.Text = "オプション(&O)...";
             // 
             // helpHToolStripMenuItem
@@ -174,7 +192,7 @@
             // aboutAToolStripMenuItem
             // 
             this.aboutAToolStripMenuItem.Name = "aboutAToolStripMenuItem";
-            this.aboutAToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutAToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.aboutAToolStripMenuItem.Text = "バージョン情報(&A)...";
             // 
             // contextMenuStripListFile
@@ -198,6 +216,14 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(197, 6);
+            // 
+            // copypathToolStripContextMenuItem
+            // 
+            this.copypathToolStripContextMenuItem.Name = "copypathToolStripContextMenuItem";
+            this.copypathToolStripContextMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.C)));
+            this.copypathToolStripContextMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.copypathToolStripContextMenuItem.Text = "パスのコピー";
             // 
             // propertyToolStripContextMenuItem
             // 
@@ -249,29 +275,12 @@
             this.buttonFindReset.UseVisualStyleBackColor = true;
             this.buttonFindReset.Visible = false;
             // 
-            // copypathToolStripContextMenuItem
+            // openToolStripMenuItem
             // 
-            this.copypathToolStripContextMenuItem.Name = "copypathToolStripContextMenuItem";
-            this.copypathToolStripContextMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.C)));
-            this.copypathToolStripContextMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.copypathToolStripContextMenuItem.Text = "パスのコピー";
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copypathToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.editToolStripMenuItem.Text = "編集(&E)";
-            // 
-            // copypathToolStripMenuItem
-            // 
-            this.copypathToolStripMenuItem.Name = "copypathToolStripMenuItem";
-            this.copypathToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.C)));
-            this.copypathToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.copypathToolStripMenuItem.Text = "パスのコピー(&C)";
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.openToolStripMenuItem.Text = "項目を開く(&O)";
             // 
             // MainForm
             // 
@@ -326,6 +335,7 @@
         private System.Windows.Forms.ToolStripMenuItem copypathToolStripContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copypathToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
     }
 }
 

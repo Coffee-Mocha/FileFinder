@@ -26,6 +26,8 @@ namespace FileFinder
 
             // メニュー項目のイベントハンドラ
             this.exitXToolStripMenuItem.Click += ExitXToolStripMenuItem_Click;
+            this.editToolStripMenuItem.Click += EditToolStripMenuItem_Click;
+            this.openToolStripMenuItem.Click += OpenToolStripMenuItem_Click;
             this.copypathToolStripMenuItem.Click += CopypathToolStripMenuItem_Click;
             this.OptionOToolStripMenuItem.Click += OptionOToolStripMenuItem_Click;
             this.aboutAToolStripMenuItem.Click += AboutAToolStripMenuItem_Click;
@@ -49,6 +51,35 @@ namespace FileFinder
             this.copypathToolStripContextMenuItem.Click += CopypathToolStripMenuItem_Click;
             this.propertyToolStripContextMenuItem.Click += PropertyToolStripMenuItem_Click;
 
+        }
+
+        private void EditToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+            // メニュー項目「開く」の状態設定
+            if (this.listFiles.SelectedItems.Count > 0)
+            {
+                // リスト項目が選択されていれば有効化
+                this.openToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                // リスト項目が選択されていなければ無効化
+                this.openToolStripMenuItem.Enabled = false;
+            }
+
+            // メニュー項目「パスのコピー」の状態設定
+            if (this.listFiles.SelectedItems.Count > 0)
+            {
+                // リスト項目が選択されていれば有効化
+                this.copypathToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                // リスト項目が選択されていなければ無効化
+                this.copypathToolStripMenuItem.Enabled = false;
+            }
         }
 
         private void ButtonFindReset_Click(object sender, EventArgs e)
