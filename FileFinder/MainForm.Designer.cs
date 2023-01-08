@@ -40,6 +40,7 @@
             this.fileFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copypathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OptionOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,7 +56,6 @@
             this.checkReadOnly = new System.Windows.Forms.CheckBox();
             this.buttonListUpdate = new System.Windows.Forms.Button();
             this.buttonFindReset = new System.Windows.Forms.Button();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.contextMenuStripListFile.SuspendLayout();
             this.SuspendLayout();
@@ -158,8 +158,16 @@
             this.editToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.editToolStripMenuItem.Text = "編集(&E)";
             // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.openToolStripMenuItem.Text = "項目を開く(&O)";
+            // 
             // copypathToolStripMenuItem
             // 
+            this.copypathToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("copypathToolStripMenuItem.Image")));
             this.copypathToolStripMenuItem.Name = "copypathToolStripMenuItem";
             this.copypathToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.C)));
@@ -178,7 +186,7 @@
             // 
             this.OptionOToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OptionOToolStripMenuItem.Image")));
             this.OptionOToolStripMenuItem.Name = "OptionOToolStripMenuItem";
-            this.OptionOToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.OptionOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.OptionOToolStripMenuItem.Text = "オプション(&O)...";
             // 
             // helpHToolStripMenuItem
@@ -219,6 +227,7 @@
             // 
             // copypathToolStripContextMenuItem
             // 
+            this.copypathToolStripContextMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("copypathToolStripContextMenuItem.Image")));
             this.copypathToolStripContextMenuItem.Name = "copypathToolStripContextMenuItem";
             this.copypathToolStripContextMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.C)));
@@ -275,13 +284,6 @@
             this.buttonFindReset.UseVisualStyleBackColor = true;
             this.buttonFindReset.Visible = false;
             // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.openToolStripMenuItem.Text = "項目を開く(&O)";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -297,6 +299,7 @@
             this.Controls.Add(this.listFiles);
             this.Controls.Add(this.textFind);
             this.Controls.Add(this.menuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.Text = "XLSOpener";

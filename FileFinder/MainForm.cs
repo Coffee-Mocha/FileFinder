@@ -62,6 +62,12 @@ namespace FileFinder
             {
                 // リスト項目が選択されていれば有効化
                 this.openToolStripMenuItem.Enabled = true;
+                // ファイルのアイコン
+                foreach (ListViewItem item in this.listFiles.SelectedItems)
+                {
+                    Icon appIcon = System.Drawing.Icon.ExtractAssociatedIcon(item.Text);
+                    this.openToolStripMenuItem.Image = appIcon.ToBitmap();
+                }
             }
             else
             {

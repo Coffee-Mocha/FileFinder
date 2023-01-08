@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FilePropertyForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.OK = new System.Windows.Forms.Button();
             this.textFileName = new System.Windows.Forms.TextBox();
             this.textDirectoryName = new System.Windows.Forms.TextBox();
             this.labelDirectoryName = new System.Windows.Forms.Label();
@@ -37,7 +39,6 @@
             this.textLastWriteTime = new System.Windows.Forms.TextBox();
             this.labelLastWriteTime = new System.Windows.Forms.Label();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
-            this.OK = new System.Windows.Forms.Button();
             this.labelCreationTime = new System.Windows.Forms.Label();
             this.textCreationTime = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
@@ -64,13 +65,23 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 159F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 39.75904F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.24096F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 142F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(324, 350);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // OK
+            // 
+            this.OK.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.OK.Location = new System.Drawing.Point(246, 322);
+            this.OK.Name = "OK";
+            this.OK.Size = new System.Drawing.Size(75, 23);
+            this.OK.TabIndex = 1;
+            this.OK.Text = "閉じる";
+            this.OK.UseVisualStyleBackColor = true;
             // 
             // textFileName
             // 
@@ -87,17 +98,19 @@
             // textDirectoryName
             // 
             this.textDirectoryName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textDirectoryName.Location = new System.Drawing.Point(89, 107);
+            this.textDirectoryName.Dock = System.Windows.Forms.DockStyle.Left;
+            this.textDirectoryName.Location = new System.Drawing.Point(89, 106);
+            this.textDirectoryName.Multiline = true;
             this.textDirectoryName.Name = "textDirectoryName";
             this.textDirectoryName.ReadOnly = true;
-            this.textDirectoryName.Size = new System.Drawing.Size(232, 12);
+            this.textDirectoryName.Size = new System.Drawing.Size(232, 44);
             this.textDirectoryName.TabIndex = 1;
             this.textDirectoryName.Text = "場所";
             // 
             // labelDirectoryName
             // 
             this.labelDirectoryName.AutoSize = true;
-            this.labelDirectoryName.Location = new System.Drawing.Point(3, 104);
+            this.labelDirectoryName.Location = new System.Drawing.Point(3, 103);
             this.labelDirectoryName.Name = "labelDirectoryName";
             this.labelDirectoryName.Size = new System.Drawing.Size(31, 12);
             this.labelDirectoryName.TabIndex = 2;
@@ -125,7 +138,7 @@
             // textLastWriteTime
             // 
             this.textLastWriteTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textLastWriteTime.Location = new System.Drawing.Point(89, 161);
+            this.textLastWriteTime.Location = new System.Drawing.Point(89, 178);
             this.textLastWriteTime.Name = "textLastWriteTime";
             this.textLastWriteTime.ReadOnly = true;
             this.textLastWriteTime.Size = new System.Drawing.Size(232, 12);
@@ -136,7 +149,7 @@
             // labelLastWriteTime
             // 
             this.labelLastWriteTime.AutoSize = true;
-            this.labelLastWriteTime.Location = new System.Drawing.Point(3, 158);
+            this.labelLastWriteTime.Location = new System.Drawing.Point(3, 175);
             this.labelLastWriteTime.Name = "labelLastWriteTime";
             this.labelLastWriteTime.Size = new System.Drawing.Size(55, 12);
             this.labelLastWriteTime.TabIndex = 6;
@@ -144,26 +157,17 @@
             // 
             // pictureBoxIcon
             // 
+            this.pictureBoxIcon.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBoxIcon.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(80, 50);
+            this.pictureBoxIcon.Size = new System.Drawing.Size(80, 64);
             this.pictureBoxIcon.TabIndex = 7;
             this.pictureBoxIcon.TabStop = false;
-            // 
-            // OK
-            // 
-            this.OK.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.OK.Location = new System.Drawing.Point(246, 322);
-            this.OK.Name = "OK";
-            this.OK.Size = new System.Drawing.Size(75, 23);
-            this.OK.TabIndex = 1;
-            this.OK.Text = "閉じる";
-            this.OK.UseVisualStyleBackColor = true;
             // 
             // labelCreationTime
             // 
             this.labelCreationTime.AutoSize = true;
-            this.labelCreationTime.Location = new System.Drawing.Point(3, 138);
+            this.labelCreationTime.Location = new System.Drawing.Point(3, 153);
             this.labelCreationTime.Name = "labelCreationTime";
             this.labelCreationTime.Size = new System.Drawing.Size(55, 12);
             this.labelCreationTime.TabIndex = 8;
@@ -173,7 +177,7 @@
             // 
             this.textCreationTime.BackColor = System.Drawing.SystemColors.Control;
             this.textCreationTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textCreationTime.Location = new System.Drawing.Point(89, 141);
+            this.textCreationTime.Location = new System.Drawing.Point(89, 156);
             this.textCreationTime.Name = "textCreationTime";
             this.textCreationTime.ReadOnly = true;
             this.textCreationTime.Size = new System.Drawing.Size(232, 12);
@@ -187,6 +191,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(348, 369);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FilePropertyForm";

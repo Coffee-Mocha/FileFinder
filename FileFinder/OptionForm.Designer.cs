@@ -44,10 +44,10 @@ namespace FileFinder
             this.labelCmdSwitchInstanceExecute = new System.Windows.Forms.Label();
             this.textCmdSwitchInstanceExecute = new System.Windows.Forms.TextBox();
             this.textCmdSwitchReadOnly = new System.Windows.Forms.TextBox();
-            this.buttonMicrosoft365ExcelPath = new System.Windows.Forms.Button();
-            this.buttonOffice2016ExcelPath = new System.Windows.Forms.Button();
             this.buttonResetCmdSwitchReadOnly = new System.Windows.Forms.Button();
             this.buttonResetCmdSwitchInstanceExecute = new System.Windows.Forms.Button();
+            this.buttonMicrosoft365ExcelPath = new System.Windows.Forms.Button();
+            this.buttonOffice2016ExcelPath = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -191,26 +191,6 @@ namespace FileFinder
             this.textCmdSwitchReadOnly.Size = new System.Drawing.Size(47, 19);
             this.textCmdSwitchReadOnly.TabIndex = 1;
             // 
-            // buttonMicrosoft365ExcelPath
-            // 
-            this.buttonMicrosoft365ExcelPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMicrosoft365ExcelPath.Location = new System.Drawing.Point(381, 73);
-            this.buttonMicrosoft365ExcelPath.Name = "buttonMicrosoft365ExcelPath";
-            this.buttonMicrosoft365ExcelPath.Size = new System.Drawing.Size(75, 23);
-            this.buttonMicrosoft365ExcelPath.TabIndex = 5;
-            this.buttonMicrosoft365ExcelPath.Text = "Microsoft365";
-            this.buttonMicrosoft365ExcelPath.UseVisualStyleBackColor = true;
-            // 
-            // buttonOffice2016ExcelPath
-            // 
-            this.buttonOffice2016ExcelPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonOffice2016ExcelPath.Location = new System.Drawing.Point(462, 73);
-            this.buttonOffice2016ExcelPath.Name = "buttonOffice2016ExcelPath";
-            this.buttonOffice2016ExcelPath.Size = new System.Drawing.Size(75, 23);
-            this.buttonOffice2016ExcelPath.TabIndex = 6;
-            this.buttonOffice2016ExcelPath.Text = "Office2016";
-            this.buttonOffice2016ExcelPath.UseVisualStyleBackColor = true;
-            // 
             // buttonResetCmdSwitchReadOnly
             // 
             this.buttonResetCmdSwitchReadOnly.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -234,6 +214,26 @@ namespace FileFinder
             this.buttonResetCmdSwitchInstanceExecute.TabIndex = 7;
             this.buttonResetCmdSwitchInstanceExecute.Text = "リセット";
             this.buttonResetCmdSwitchInstanceExecute.UseVisualStyleBackColor = true;
+            // 
+            // buttonMicrosoft365ExcelPath
+            // 
+            this.buttonMicrosoft365ExcelPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMicrosoft365ExcelPath.Location = new System.Drawing.Point(358, 73);
+            this.buttonMicrosoft365ExcelPath.Name = "buttonMicrosoft365ExcelPath";
+            this.buttonMicrosoft365ExcelPath.Size = new System.Drawing.Size(88, 23);
+            this.buttonMicrosoft365ExcelPath.TabIndex = 5;
+            this.buttonMicrosoft365ExcelPath.Text = "Microsoft365";
+            this.buttonMicrosoft365ExcelPath.UseVisualStyleBackColor = true;
+            // 
+            // buttonOffice2016ExcelPath
+            // 
+            this.buttonOffice2016ExcelPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonOffice2016ExcelPath.Location = new System.Drawing.Point(450, 73);
+            this.buttonOffice2016ExcelPath.Name = "buttonOffice2016ExcelPath";
+            this.buttonOffice2016ExcelPath.Size = new System.Drawing.Size(88, 23);
+            this.buttonOffice2016ExcelPath.TabIndex = 6;
+            this.buttonOffice2016ExcelPath.Text = "Office2016";
+            this.buttonOffice2016ExcelPath.UseVisualStyleBackColor = true;
             // 
             // OptionForm
             // 
